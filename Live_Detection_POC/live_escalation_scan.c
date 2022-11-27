@@ -16,36 +16,38 @@ int main(void)
    my_args[2] = "spy_output.txt";
    my_args[3] = NULL;
 
-   /* start the sysdig scanning */
-   FILE *fp = NULL;
-   fp = fopen("spy_output.txt", "w+");
-   system("sudo sysdig -c spy_users > spy_output.txt");
-
+  printf("Welcome to the proof of concept for dirtypipe live detection.\n");
+  int status;
+  /* start the sysdig scanning */
+  FILE *fp = NULL;
+  fp = fopen("spy_output.txt", "w+");
 
   switch ((pid = fork()))
-   {
-      case -1:
-         /* Fork() has failed */
-         perror ("fork");
-         break;
-      case 0:
-         /* This is processed by the child */
-         puts("Beginning scan for unexpected root escalations...");
-         while(1)
-         {
-           execv ("detect_root_escalation", my_args);
-         }
-           puts("Uh oh! If this prints, execv() must have failed");
-           exit(EXIT_FAILURE);
-         break;
-      default:
-         /* This is processed by the parent */
-         puts ("Welcome to the proof of concept for dirtypipe live detection.");
-         wait(NULL);
-         break;
+  {
+   case -1:
+      /* Fork() has failed */
+      break;
+    case 0:
+      /* This is processed by the child */
+      printf("Beginning scan for unexpected root escalations...\n");
+      fflush(stdout);
+      fflush(fp);
+      execv("detect_root_escalation", my_args);
+      printf("Uh oh! If this prints, execv() must have failed\n");
+      exit(EXIT_FAILURE);
+     break;
+
+    default:
+      /* This is processed by the parent */
+      signal(SIGCHLD, SIG_IGN);
+      system("sudo stdbuf -oL sysdig -c spy_users | tee spy_output.txt");
+      waitpid(-1, &status, WEXITED);
+      printf("FINISHED CHILD\n");
+      break;
    }
 
-   fclose(fp);
-   puts ("PERFORM ACTION HERE TO NOTIFY OR RESOLVE DETECTED ESCALATION");
-   return 0;
+
+  fclose(fp);
+  return 0;
 }
+
