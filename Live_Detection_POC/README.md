@@ -14,5 +14,5 @@ gcc main.c -o main
 `sudo ./main` on the target machine as the 'setup' user
 
 ### TODO
-- cleanup, add comments
+- cleanup code and add comments
 - cmake file for compiling code
