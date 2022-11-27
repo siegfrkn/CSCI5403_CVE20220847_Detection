@@ -38,25 +38,18 @@ int main( int ac, char* av[] )
          fflush(fp);
          if(strstr(lineBuffer, av[1]))
          {
-            printf("\nAN UNAUTHORIZED ROOT ESCALATION HAS BEEN DETECTED:\n%s\n", lineBuffer);
+            printf("\n\n[SCAN] AN UNAUTHORIZED ROOT ESCALATION HAS BEEN DETECTED:\n%s\n", lineBuffer);
             fclose(fp);
-
-            printf("TERMINATING PROCESSES...\n");
-            int total_length = 512;
-            char line[total_length];
-            FILE * command = popen("pidof sysdig","r");
-            fgets(line,total_length,command);
-            pid_t pid = strtoul(line,NULL,10);
-            pclose(command);
-            printf("PID OF SYSDIG: %d\n", pid);
-            kill(pid, SIGKILL);
+            sleep(10);
+            system("pkill sysdig");
+            system("pkill check_passwd_fi");
+            printf("\n[SCAN] Terminating sibling processes...\n");
             sleep(1);
-            printf("Program exiting...\n");
-            exit(0);
+            printf("[SCAN] Program exiting...\n");
+            exit(0);      
          }
       }
-          fclose(fp);
+      fclose(fp);
    }
    return 0;
 }
-               
