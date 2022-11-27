@@ -32,6 +32,8 @@ int main( int ac, char* av[] )
 
       while (fgets(lineBuffer, BUFFER_LENGTH, fp))
       {
+         fflush(stdout);
+         fflush(fp);
          if(strstr(lineBuffer, av[1]))
          {
             printf("\nAN UNAUTHORIZED ROOT ESCALATION HAS BEEN DETECTED:\n%s\n", lineBuffer);
