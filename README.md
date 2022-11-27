@@ -1,5 +1,14 @@
 # CSCI5403_CVE20220847_Detection
 
+## Summary
+This repository hosts the instructions to setup an environment, perform the dirtypipe CVE20222847 exploit, and a proof-of-concept (POC) scanning demo which demonstrates how a cache manipulation exploit such as dirtypipe can be detected in real time.
+
+## Description
+The dirtypipe exploit takes advantage of a vulnerability that allows a user with only read-only privledges to root-owned files, the ability to make modifications to the cached copy of a file, while the actual contents of the file on the disk remains untouched and unmodified. This allows a read-only user to escalate to root during a single session. When that cache is flushed or the user ends the session, all traces of the exploit will be removed. The original discovery of this exploit was only made due to a series of strange log file artifacts.
+
+Additional detail about the original exploit are detailed by the discovering engineer [here](https://dirtypipe.cm4all.com/).
+
+
 ## Team Links
 - [Proposal](https://docs.google.com/document/d/1Ej5i50u-w15W4MOU5rrApcnDrz5du96RQaN6N_96zIk/edit?usp=sharing)
 - [Progress Report](https://docs.google.com/document/d/1YTQE10_W-f9DNDSEviGpOtVneBLEFnfrtC05tbwd9sI/edit?usp=sharing)
@@ -19,6 +28,7 @@
 #### VirtualBox
 - https://fabian-voith.de/2020/04/21/understanding-virtualbox-networking-schemes-to-set-up-a-good-and-safe-lab/
 #### Root Escalations
+- https://biriukov.dev/docs/page-cache/2-essential-page-cache-theory/
 - https://manpages.ubuntu.com/manpages/bionic/en/man5/passwd.5.html
 - https://manpages.ubuntu.com/manpages/bionic/en/man3/crypt.3.html
 - https://www.hackingarticles.in/editing-etc-passwd-file-for-privilege-escalation/
@@ -27,3 +37,8 @@
 - https://faq.cprogramming.com/cgi-bin/smartfaq.cgi?answer=1044654269&id=1043284392
 - https://stackoverflow.com/questions/259355/how-can-you-flush-a-write-using-a-file-descriptor
 - http://www.crasseux.com/books/ctutorial/Writing-files-at-a-low-level.html
+
+## TODO
+- update README with details
+- Video demo
+- Add team presentation
