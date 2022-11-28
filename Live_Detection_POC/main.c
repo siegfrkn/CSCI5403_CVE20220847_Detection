@@ -52,7 +52,7 @@ int main()
             /*
              * The first child process calls the execution of the check_passwd_file program
              * which calls the pwck function in an infinite loop to detect changes to the
-             * /etc/passwd cached file. If a change is detected, the user is notified and
+             * /etc/passwd cached file. If a change is detected, the admin user is notified and
              * the scan exits.
              */
             if (j == 0)
@@ -62,7 +62,9 @@ int main()
                break;
             }
             /*
-             *
+             * The else clause is for the second child process, which executes the live_escalation_scan
+             * file that executes the sysdig file call and looks for unexpected escalations to root.
+             * If an escalation to root is detected the admin user is notified and the scan exits.
              */
             else
             {
@@ -70,10 +72,11 @@ int main()
                exit(0);
                break;
             }
-         /*
-          * This is the code exeuc
-         default:
-            /* This code is executed by the parent process */
+            /*
+             * This is executed by the parent process. If both child processes have been
+             * spawned, and both are complete and/or exited, then the parent process sends
+             * the scan complete message to ther terminal.
+             */
             if(j == (numChildren - 1))
             {
                while((wpid = wait(&status)) > 0);
