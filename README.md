@@ -41,5 +41,4 @@ A video of the exploit and live detection can be found [here](https://youtu.be/z
 - http://www.crasseux.com/books/ctutorial/Writing-files-at-a-low-level.html
 
 ## TODO
-- Video demo
 - Add team presentation
