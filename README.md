@@ -39,6 +39,5 @@ Additional detail about the original exploit are detailed by the discovering eng
 - http://www.crasseux.com/books/ctutorial/Writing-files-at-a-low-level.html
 
 ## TODO
-- update README with details
 - Video demo
 - Add team presentation
