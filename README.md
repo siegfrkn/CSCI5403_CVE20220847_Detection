@@ -8,6 +8,8 @@ The dirtypipe exploit takes advantage of a vulnerability that allows a user with
 
 Additional detail about the original exploit are detailed by the discovering engineer [here](https://dirtypipe.cm4all.com/).
 
+## Video Demonstration
+A video of the exploit and live detection can be found [here](https://youtu.be/zFXZ-Wd7Jek).
 
 ## Team Links
 - [Proposal](https://docs.google.com/document/d/1Ej5i50u-w15W4MOU5rrApcnDrz5du96RQaN6N_96zIk/edit?usp=sharing)
