@@ -39,6 +39,3 @@ A video of the exploit and live detection can be found [here](https://youtu.be/z
 - https://faq.cprogramming.com/cgi-bin/smartfaq.cgi?answer=1044654269&id=1043284392
 - https://stackoverflow.com/questions/259355/how-can-you-flush-a-write-using-a-file-descriptor
 - http://www.crasseux.com/books/ctutorial/Writing-files-at-a-low-level.html
-
-## TODO
-- Add team presentation
