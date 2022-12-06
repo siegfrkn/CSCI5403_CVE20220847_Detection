@@ -23,6 +23,7 @@ A video of the exploit and live detection can be found [here](https://youtu.be/z
 - https://raxis.com/blog/exploiting-dirty-pipe-cve-2022-0847
 - https://github.com/Al1ex/CVE-2022-0847
 - https://attack.mitre.org/techniques/T1003/008/
+- https://www.securitydrops.com/dirty-pipe/
 #### Linux
 - https://releases.ubuntu.com/20.04/?_ga=2.158895674.1041833567.1668977229-1417524537.1668977229
 - https://www.addictivetips.com/ubuntu-linux-tips/downgrade-ubuntu-kernel/
